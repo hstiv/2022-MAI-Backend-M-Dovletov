@@ -16,6 +16,8 @@ sudo apt install \
 python3 -m venv env
 pip3 install django
 
+# sh /dckr/docker-init.sh
+
 echo '===>DONE!<==='
 
 
