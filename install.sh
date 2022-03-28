@@ -3,7 +3,7 @@
 # For ubuntu/debian based distributives
 echo '===>BEGIN!<==='
 
-sudo apt-get update && sudo apt get upgrade
+sudo apt-get update && sudo apt-get upgrade
 
 sudo apt install \
 	python3 \
@@ -12,6 +12,8 @@ sudo apt install \
     curl \
     gnupg \
     lsb-release \
+    nginx \
+    gunicorn
 
 python3 -m venv env
 pip3 install django
