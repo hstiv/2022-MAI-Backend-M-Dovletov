@@ -16,6 +16,7 @@ sudo apt install \
     gunicorn
 
 python3 -m venv env
+pip install virtualenv
 pip3 install django
 
 # sh /dckr/docker-init.sh
