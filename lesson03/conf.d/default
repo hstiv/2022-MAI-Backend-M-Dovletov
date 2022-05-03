@@ -1,0 +1,41 @@
+upstream backend {
+    server localhost:8000 weight=1 max_fails=3 fail_timeout=360s;
+}
+
+upstream foonovels {
+    server localhost:8080 weight=1 max_fails=3 fail_timeout=360s;
+}
+
+# Default server configuration
+
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    root /var/www/html;
+
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name _;
+	
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+
+    location /public/ {                    
+        alias /home/hstib/Projects/2022-MAI-Backend-M-Dovletov/lesson02/content/;
+    }
+    
+    location /backend/ {
+        proxy_pass http://backend;
+    }
+
+    location /foonovels/ {
+        proxy_pass http://foonovels;
+    }
+    
+    location / {
+        # First attempt to serve request as file, then
+	# as directory, then fall back to displaying a 404.
+	    try_files $uri $uri/ =404;
+    }
+}

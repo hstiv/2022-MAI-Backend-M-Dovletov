@@ -2,14 +2,13 @@
 
 # Prepare nginx configs before
 
-sudo mkdir /var/www/html/public
-sudo touch /var/www/html/public/example.txt
-sudo chmod 777 /var/www/html/public/example.txt
-echo 'Hello World' > /var/www/html/public/example.txt
+# sudo mkdir /var/www/html/public
+# sudo touch /var/www/html/public/example.txt
+# sudo chmod 777 /var/www/html/public/example.txt
+# echo 'Hello World' > /var/www/html/public/example.txt
 
-gunicorn --workers 2 myapp:app &
+sudo cp ./conf.d/default /etc/nginx/sites-available/
 
-curl http://localhost:8080/app/
+sudo systemctl restart nginx
 
-
-# Don't foget to kill processes (via 'ps')
+gunicorn --workers 2 gcorn:app
