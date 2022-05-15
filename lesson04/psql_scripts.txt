@@ -8,7 +8,8 @@ insert into publisher (name, country) values ('Kakao Page', 'Korea');
 
 create table novel (
 id SERIAL PRIMARY KEY,
-title varchar(128) NOT NULL,
+title varchar(128),
+original_title varchar(128),
 description text
 );
 
@@ -25,13 +26,13 @@ novel_id integer REFERENCES novel
 
 create table author (
 id SERIAL PRIMARY KEY,
-name varchar(128) NOT NULL,
+name varchar(128),
 bio text NOT NULL,
-country varchar(64) NOT NULL
+country varchar(64)
 );
 
 create table publisher (
 id SERIAL PRIMARY KEY,
-name varchar(128) NOT NULL,
-country varchar(64) NOT NULL
+name varchar(128),
+country varchar(64)
 );
