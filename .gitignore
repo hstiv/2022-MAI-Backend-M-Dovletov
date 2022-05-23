@@ -44,3 +44,5 @@ ENV/
 env.bak/
 venv.bak/
 
+# Vagrant
+.vagrant

@@ -1,4 +1,6 @@
-.PHONY:			up down rm re
+.PHONY:			all up down rm re
+
+all: up
 
 up:
 	sudo docker-compose build

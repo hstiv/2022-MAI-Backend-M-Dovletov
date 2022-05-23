@@ -2,9 +2,10 @@ version: '3.3'
 
 services:
 
-  pg_sql:
-    image: postgres
-    container_name: pg_sql
+  pgsql:
+    build:
+      context: pgsql
+      dockerfile: Dockerfile
     environment:
       POSTGRES_USER: "admin"
       POSTGRES_DB: "novels"
@@ -59,10 +60,10 @@ services:
       - default
 
     depends_on:
-      - pg_sql
+      - pgsql
     
-    command: sh -c "python3 novels_project/manage.py migrate &&
-                    python3 novels_project/manage.py runserver 0.0.0.0:8080"
+    command: sh -c "python3 /home/vagrant/django-container/novels_project/manage.py migrate &&
+                    python3 /home/vagrant/django-container/novels_project/manage.py runserver 0.0.0.0:8080"
 
 volumes:
   pgdata:
